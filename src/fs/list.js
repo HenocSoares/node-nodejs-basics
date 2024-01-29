@@ -1,5 +1,17 @@
 const list = async () => {
-    // Write your code here 
+    try {
+        const {
+            readdirSync
+        } = await import('fs');
+        const {
+            join
+        } = await import('path');
+        const filesPath = join('.', 'files');
+        const filenames = readdirSync(filesPath);
+        console.log(filenames);
+    } catch (error) {
+        throw new Error('FS operation failed');
+    }
 };
 
 await list();
